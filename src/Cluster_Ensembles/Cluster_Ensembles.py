@@ -898,7 +898,7 @@ def create_membership_matrix(cluster_run):
 
     cluster_run = np.asanyarray(cluster_run)
 
-    if reduce(operator.mul, cluster_run.shape, 1) != max(cluster_run.shape):
+    if functools.reduce(operator.mul, cluster_run.shape, 1) != max(cluster_run.shape):
         raise ValueError("\nERROR: Cluster_Ensembles: create_membership_matrix: "
                          "problem in dimensions of the cluster label vector "
                          "under consideration.")
@@ -1248,7 +1248,7 @@ def overlap_matrix(hdf5_file_name, consensus_labels, cluster_runs):
     consensus_adjacency :
     """
 
-    if reduce(operator.mul, cluster_runs.shape, 1) == max(cluster_runs.shape):
+    if functools.reduce(operator.mul, cluster_runs.shape, 1) == max(cluster_runs.shape):
         cluster_runs = cluster_runs.reshape(1, -1)
 
     N_runs, N_samples = cluster_runs.shape
