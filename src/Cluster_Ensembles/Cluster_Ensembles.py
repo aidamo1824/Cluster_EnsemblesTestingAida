@@ -346,7 +346,7 @@ def ceEvalMutual(cluster_runs, cluster_ensemble = None, verbose = False):
     if cluster_ensemble is None:
         return 0.0
 
-    if reduce(operator.mul, cluster_runs.shape, 1) == max(cluster_runs.shape):
+    if functools.reduce(operator.mul, cluster_runs.shape, 1) == max(cluster_runs.shape):
         cluster_runs = cluster_runs.reshape(1, -1)
 
     weighted_average_mutual_information = 0
@@ -394,7 +394,7 @@ def checkcl(cluster_run, verbose = False):
     if cluster_run.size == 0:
         raise ValueError("\nERROR: Cluster_Ensembles: checkcl: "
                          "empty vector provided as input.\n")
-    elif reduce(operator.mul, cluster_run.shape, 1) != max(cluster_run.shape):
+    elif functools.reduce(operator.mul, cluster_run.shape, 1) != max(cluster_run.shape):
         raise ValueError("\nERROR: Cluster_Ensembles: checkl: "
                          "problem in dimensions of the cluster label vector "
                          "under consideration.\n")
